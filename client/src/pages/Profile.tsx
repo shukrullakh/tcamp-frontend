@@ -4,10 +4,35 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MOCK_QUESTIONS } from "@/lib/mockData";
 import { QuestionCard } from "@/components/QuestionCard";
-import { MapPin, Link as LinkIcon, Calendar, Mail } from "lucide-react";
+import { MapPin, Link as LinkIcon, Calendar, Mail, Edit2, Check, X } from "lucide-react";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 export function Profile() {
-  const userQuestions = MOCK_QUESTIONS; // In real app, filter by user ID
+  const { toast } = useToast();
+  const userQuestions = MOCK_QUESTIONS; 
+  const [isEditing, setIsEditing] = useState(false);
+  const [profileData, setProfileData] = useState({
+    name: "Student User",
+    username: "felix_dev",
+    bio: "Computer Science Student • AI Enthusiast"
+  });
+  const [tempData, setTempData] = useState({ ...profileData });
+
+  const handleSave = () => {
+    setProfileData({ ...tempData });
+    setIsEditing(false);
+    toast({
+      title: "Profil yangilandi",
+      description: "Ma'lumotlaringiz muvaffaqiyatli saqlandi.",
+    });
+  };
+
+  const handleCancel = () => {
+    setTempData({ ...profileData });
+    setIsEditing(false);
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -20,13 +45,59 @@ export function Profile() {
               <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" />
               <AvatarFallback>SU</AvatarFallback>
             </Avatar>
+            
             <div className="flex-1 space-y-1 mt-2 md:mt-0 pb-1">
-              <h1 className="text-2xl font-bold font-heading">Student User</h1>
-              <p className="text-muted-foreground">Computer Science Student • AI Enthusiast</p>
+              {isEditing ? (
+                <div className="space-y-3 pt-2">
+                  <div className="grid gap-2">
+                    <label className="text-xs font-semibold uppercase text-muted-foreground">Ism</label>
+                    <Input 
+                      value={tempData.name} 
+                      onChange={(e) => setTempData({...tempData, name: e.target.value})}
+                      className="h-9"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label className="text-xs font-semibold uppercase text-muted-foreground">Login (Username)</label>
+                    <Input 
+                      value={tempData.username} 
+                      onChange={(e) => setTempData({...tempData, username: e.target.value})}
+                      className="h-9"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label className="text-xs font-semibold uppercase text-muted-foreground">Biografiya</label>
+                    <Input 
+                      value={tempData.bio} 
+                      onChange={(e) => setTempData({...tempData, bio: e.target.value})}
+                      className="h-9"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h1 className="text-2xl font-bold font-heading">{profileData.name}</h1>
+                  <p className="text-sm font-medium text-primary">@{profileData.username}</p>
+                  <p className="text-muted-foreground">{profileData.bio}</p>
+                </>
+              )}
             </div>
+
             <div className="flex gap-2 pb-1 w-full md:w-auto">
-              <Button>Edit Profile</Button>
-              <Button variant="outline">Share</Button>
+              {isEditing ? (
+                <>
+                  <Button onClick={handleSave} className="bg-green-600 hover:bg-green-700">
+                    <Check className="w-4 h-4 mr-2" /> Saqlash
+                  </Button>
+                  <Button variant="outline" onClick={handleCancel}>
+                    <X className="w-4 h-4 mr-2" /> Bekor qilish
+                  </Button>
+                </>
+              ) : (
+                <Button onClick={() => setIsEditing(true)}>
+                  <Edit2 className="w-4 h-4 mr-2" /> Tahrirlash
+                </Button>
+              )}
             </div>
           </div>
           

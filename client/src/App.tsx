@@ -15,6 +15,7 @@ import { AskQuestion } from "@/pages/AskQuestion";
 import { AskAI } from "@/pages/AskAI";
 import { Notifications } from "@/pages/Notifications";
 import { Profile } from "@/pages/Profile";
+import { Settings } from "@/pages/Settings";
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/ask-ai" component={AskAI} />
         <Route path="/notifications" component={Notifications} />
         <Route path="/profile" component={Profile} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

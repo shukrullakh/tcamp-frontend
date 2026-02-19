@@ -22,7 +22,8 @@ import {
   Menu,
   X,
   PlusCircle,
-  MessageSquare
+  MessageSquare,
+  Settings as SettingsIcon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -73,6 +74,7 @@ export function Navbar() {
             <NavLink href="/">Home</NavLink>
             <NavLink href="/ask">Ask Question</NavLink>
             <NavLink href="/ask-ai">Ask AI</NavLink>
+            <NavLink href="/settings">Settings</NavLink>
           </nav>
         </div>
 
@@ -188,6 +190,14 @@ export function Navbar() {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
+                <Link href="/settings">
+                  <div className="flex items-center cursor-pointer w-full">
+                    <SettingsIcon className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </div>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/ask">
                   <div className="flex items-center cursor-pointer w-full">
                     <PlusCircle className="mr-2 h-4 w-4" />
@@ -232,6 +242,11 @@ export function Navbar() {
             <Link href="/ask-ai">
               <a className="flex items-center gap-2 text-sm font-medium p-2 hover:bg-muted rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
                 Ask AI
+              </a>
+            </Link>
+            <Link href="/settings">
+              <a className="flex items-center gap-2 text-sm font-medium p-2 hover:bg-muted rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
+                Settings
               </a>
             </Link>
             <Link href="/profile">
