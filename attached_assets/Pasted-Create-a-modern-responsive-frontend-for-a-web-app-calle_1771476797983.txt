@@ -1,0 +1,116 @@
+Create a modern responsive frontend for a web app called "TalabaCampus".
+
+TalabaCampus is a student Q&A platform with AI assistance.
+
+Use:
+- React (functional components)
+- React Router
+- Tailwind CSS
+- Context API
+- LocalStorage
+- Modern SaaS UI
+
+--------------------------------
+GLOBAL FEATURES
+--------------------------------
+
+- Dark / Light theme toggle
+- Persist theme in localStorage
+- Smooth transition animation
+- Blue primary color (#2563eb)
+- Clean typography
+- Soft shadows
+- Rounded corners
+
+--------------------------------
+AI COMMENT FEATURE
+--------------------------------
+
+Add an "AI Sharhi" button under:
+
+- Every Question
+- Every Answer
+- Every Reply
+
+When clicked:
+- Show loading animation (3 dots or spinner)
+- After 1 second, show a mock AI explanation
+- AI explanation should appear:
+  - In a collapsible expandable section
+  - Styled with soft blue background
+  - With small AI badge/icon
+- Clicking again should collapse it
+
+Mock AI examples:
+- "AI Analysis: This answer explains the concept clearly but could include more examples."
+- "AI Suggestion: Consider adding edge cases or time complexity discussion."
+- "AI Insight: This reply partially answers the question but lacks depth."
+
+--------------------------------
+LIKE SYSTEM
+--------------------------------
+
+- Like button under Questions, Answers, Replies
+- Like count
+- On click:
+  - Increase count
+  - Simulate notification creation
+
+--------------------------------
+NOTIFICATION SYSTEM
+--------------------------------
+
+Navbar:
+- Bell icon with red badge count
+- Dropdown list
+
+Notification types:
+- Someone liked your post
+- Someone replied to your question
+- Someone answered your question
+
+Clicking notification marks it as read.
+
+Add:
+- Notifications page
+- Mark all as read button
+
+--------------------------------
+PAGES
+--------------------------------
+
+1) Home
+- Question cards
+- Search bar
+
+2) Question Details
+- Question
+- Like
+- AI Sharhi button
+- Answers
+- Replies
+- AI Sharhi for each level
+
+3) Ask Question
+
+4) Ask AI (chat style)
+
+5) Notifications
+
+6) Profile
+
+--------------------------------
+COMPONENTS
+--------------------------------
+
+- Navbar.jsx
+- ThemeContext.jsx
+- NotificationContext.jsx
+- AIComment.jsx
+- LikeButton.jsx
+- QuestionCard.jsx
+- AIChat.jsx
+
+Use mock data only.
+Make UI similar to modern SaaS platforms like Notion + StackOverflow.
+Fully responsive.
