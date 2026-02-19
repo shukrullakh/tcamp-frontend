@@ -80,28 +80,30 @@ export function QuestionCard({
         )}
       </CardContent>
       
-      <CardFooter className="pt-2 pb-4 px-5 md:px-6 flex items-center justify-between border-t border-border/30 bg-muted/10">
-        <div className="flex items-center gap-4">
-          <LikeButton initialLikes={likes} entityId={id.toString()} />
-          
-          <Link href={`/question/${id}`}>
-            <a className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>{answers} Answers</span>
-            </a>
-          </Link>
+      <CardFooter className="pt-2 pb-4 px-5 md:px-6 flex flex-col border-t border-border/30 bg-muted/10">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <LikeButton initialLikes={likes} entityId={id.toString()} />
+            
+            <Link href={`/question/${id}`}>
+              <a className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>{answers} Answers</span>
+              </a>
+            </Link>
+          </div>
+
+          {compact && (
+            <Link href={`/question/${id}`}>
+              <a className="text-xs font-medium text-primary hover:text-primary/80 flex items-center ml-2">
+                View <ArrowRight className="w-3 h-3 ml-1" />
+              </a>
+            </Link>
+          )}
         </div>
         
-        {/* Only show AI on detail view or full card, usually simpler on list */}
-        <div className="flex items-center gap-2">
+        <div className="w-full">
            <AIComment contextText={content} type="question" />
-           {compact && (
-             <Link href={`/question/${id}`}>
-               <a className="text-xs font-medium text-primary hover:text-primary/80 flex items-center ml-2">
-                 View <ArrowRight className="w-3 h-3 ml-1" />
-               </a>
-             </Link>
-           )}
         </div>
       </CardFooter>
     </Card>
