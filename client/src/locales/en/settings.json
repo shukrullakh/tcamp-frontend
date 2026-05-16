@@ -1,0 +1,12 @@
+{
+  "title": "Settings",
+  "description": "Customize your account and platform interface",
+  "saved": "Settings saved",
+  "language": { "title": "Language", "region": "Language & region", "description": "Select your preferred interface language" },
+  "account": { "changeUsername": "Change username", "changeUsernameDescription": "Change your username", "newUsername": "New username", "updateUsername": "Update username", "usernameRequired": "Username is required", "usernameChanged": "Username updated", "usernameChangeError": "Could not change username" },
+  "security": { "title": "Security", "changePassword": "Change password", "passwordDescription": "Account password", "currentPassword": "Current password", "newPassword": "New password", "confirmPassword": "Confirm password", "updatePassword": "Update password", "passwordChanged": "Password changed", "passwordMismatch": "Passwords do not match", "passwordTooShort": "Password must be at least 8 characters", "wrongPassword": "Current password is incorrect" },
+  "notifications": { "title": "Notifications", "description": "Choose what types of notifications you want to receive", "email": "Email notifications", "emailDescription": "Get updates about important conversations", "delivery": "Notification delivery settings" },
+  "privacy": { "title": "Privacy", "publicProfile": "Public profile", "publicProfileDescription": "Control profile visibility", "profilePrivacy": "Profile privacy" },
+  "savedPosts": { "title": "Saved posts", "open": "View saved posts", "close": "Close", "empty": "No saved posts yet" },
+  "devices": { "title": "Devices", "description": "Devices currently signed in", "empty": "No devices connected yet" }
+}

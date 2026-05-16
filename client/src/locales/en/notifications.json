@@ -1,0 +1,9 @@
+{
+  "title": "Notifications",
+  "empty": "No notifications yet",
+  "all": "All",
+  "viewAll": "View all notifications",
+  "new": "New notification",
+  "types": { "answer": "@{{username}} answered your question", "like": "@{{username}} liked your post", "reply": "@{{username}} replied to your answer", "follow": "@{{username}} followed you", "newQuestion": "@{{username}} added a new question", "mention": "@{{username}} mentioned you in a post" },
+  "sessions": { "title": "Login devices", "lastDevice": "Last login device", "current": "Current", "empty": "No active devices yet.", "devices": "Devices", "connectedDevices": "Devices currently signed in", "terminate": "End", "terminateAll": "End all", "login": "Login: {{device}}" }
+}

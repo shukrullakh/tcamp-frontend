@@ -1,0 +1,9 @@
+{
+  "title": "Bildirishnomalar",
+  "empty": "Hali bildirishnoma yo'q",
+  "all": "Barchasi",
+  "viewAll": "Barcha bildirishnomalarni ko'rish",
+  "new": "Yangi bildirishnoma",
+  "types": { "answer": "@{{username}} savolingizga javob berdi", "like": "@{{username}} postingizni yoqtirdi", "reply": "@{{username}} javobingizga reply yozdi", "follow": "@{{username}} sizni kuzatdi", "newQuestion": "@{{username}} yangi savol qo'shdi", "mention": "@{{username}} sizni postda eslatdi" },
+  "sessions": { "title": "Login qurilmalari", "lastDevice": "Oxirgi login qurilmasi", "current": "Joriy", "empty": "Hali faol qurilma yo'q.", "devices": "Qurilmalar", "connectedDevices": "Hozirda tizimga ulangan qurilmalar", "terminate": "Tugatish", "terminateAll": "Barchasini tugatish", "login": "Login: {{device}}" }
+}

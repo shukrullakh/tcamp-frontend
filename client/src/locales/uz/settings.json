@@ -1,0 +1,12 @@
+{
+  "title": "Sozlamalar",
+  "description": "Hisobingiz va platforma interfeysini o'zingizga moslang",
+  "saved": "Sozlamalar saqlandi",
+  "language": { "title": "Til", "region": "Til va hudud", "description": "Interfeys tilini tanlang" },
+  "account": { "changeUsername": "Username o'zgartirish", "changeUsernameDescription": "Foydalanuvchi nomingizni o'zgartiring", "newUsername": "Yangi username", "updateUsername": "Username yangilash", "usernameRequired": "Username kerak", "usernameChanged": "Username yangilandi", "usernameChangeError": "Username o'zgartirilmadi" },
+  "security": { "title": "Xavfsizlik", "changePassword": "Parolni o'zgartirish", "passwordDescription": "Akkaunt paroli", "currentPassword": "Hozirgi parol", "newPassword": "Yangi parol", "confirmPassword": "Parolni tasdiqlang", "updatePassword": "Parolni yangilash", "passwordChanged": "Parol yangilandi", "passwordMismatch": "Parollar mos kelmaydi", "passwordTooShort": "Parol kamida 8 ta belgidan iborat bo'lishi kerak", "wrongPassword": "Hozirgi parol noto'g'ri" },
+  "notifications": { "title": "Bildirishnomalar", "description": "Qaysi xabarlarni olishni tanlang", "email": "Email bildirishnomalari", "emailDescription": "Muhim suhbatlardan xabar oling", "delivery": "Xabar qabul qilish sozlamalari" },
+  "privacy": { "title": "Maxfiylik", "publicProfile": "Ochiq profil", "publicProfileDescription": "Profilingiz ko'rinishini boshqaring", "profilePrivacy": "Profil maxfiyligi" },
+  "savedPosts": { "title": "Saqlangan postlar", "open": "Saqlangan postlarni ko'rish", "close": "Yopish", "empty": "Hali saqlangan post yo'q" },
+  "devices": { "title": "Qurilmalar", "description": "Hozirda tizimga ulangan qurilmalar", "empty": "Hozircha qo'shilgan qurilma yo'q" }
+}

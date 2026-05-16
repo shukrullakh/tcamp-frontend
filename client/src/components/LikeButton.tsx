@@ -1,38 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ThumbsUp } from "lucide-react";
+import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useNotifications } from "./NotificationContext";
+import { apiRequest, getAccessToken, queryClient } from "@/lib/queryClient";
+import { useLocation } from "wouter";
 
 interface LikeButtonProps {
-  initialLikes?: number;
+  likesCount?: number;
+  upvotes?: number;
+  downvotes?: number;
   entityId: string;
   type?: "question" | "answer" | "reply";
 }
 
-export function LikeButton({ initialLikes = 0, entityId, type = "question" }: LikeButtonProps) {
-  const [likes, setLikes] = useState(initialLikes);
-  const [isLiked, setIsLiked] = useState(false);
-  const { addNotification } = useNotifications();
+export function LikeButton({ likesCount, upvotes = 0, entityId, type = "question" }: LikeButtonProps) {
+  const [count, setCount] = useState(upvotes || likesCount || 0);
+  const [liked, setLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [, navigate] = useLocation();
 
-  const handleLike = () => {
-    if (isLiked) {
-      setLikes(prev => prev - 1);
-      setIsLiked(false);
-    } else {
-      setLikes(prev => prev + 1);
-      setIsLiked(true);
+  // Check localStorage for liked status on mount
+  useEffect(() => {
+    const likedKey = `liked_${type}_${entityId}`;
+    const storedLiked = localStorage.getItem(likedKey) === 'true';
+    setLiked(storedLiked);
+  }, [entityId, type]);
+
+  const handleVote = async () => {
+    if (!getAccessToken()) {
+      navigate("/login");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await apiRequest("POST", "/api/like/", {
+        type,
+        id: Number(entityId),
+        vote_type: "upvote",
+      });
+      const data = await res.json();
       
-      // Simulate notification creation
-      // In a real app, this would happen on the backend when someone else likes your content
-      // For demo, we trigger it here
-      if (Math.random() > 0.5) {
-        addNotification(
-          "like", 
-          `Someone liked your ${type}!`,
-          `/question/${entityId}`
-        );
-      }
+      const newLiked = data.voted === "upvote" || !liked;
+      setCount(data.upvotes ?? (newLiked ? count + 1 : Math.max(0, count - 1)));
+      setLiked(newLiked);
+      
+      // Save to localStorage for persistence
+      const likedKey = `liked_${type}_${entityId}`;
+      localStorage.setItem(likedKey, String(newLiked));
+      
+      // Refetch relevant queries to update UI
+      queryClient.invalidateQueries({ queryKey: [`/api/${type}s`] });
+    } catch (err) {
+      console.error("Like error:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,19 +62,15 @@ export function LikeButton({ initialLikes = 0, entityId, type = "question" }: Li
     <Button
       variant="ghost"
       size="sm"
-      onClick={handleLike}
+      onClick={handleVote}
+      disabled={loading}
       className={cn(
-        "group flex items-center gap-1.5 h-8 px-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors",
-        isLiked && "text-blue-600 dark:text-blue-500 bg-blue-50 dark:bg-blue-950/30"
+        "flex items-center gap-1.5 h-8 px-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors",
+        liked && "text-red-500 bg-red-50 dark:bg-red-950/30"
       )}
     >
-      <ThumbsUp 
-        className={cn(
-          "w-4 h-4 transition-transform duration-300 group-active:scale-125",
-          isLiked && "fill-current"
-        )} 
-      />
-      <span className="text-xs font-medium tabular-nums">{likes}</span>
+      <Heart className={cn("w-4 h-4 transition-transform duration-300 active:scale-125", liked && "fill-red-500 text-red-500")} />
+      <span className="text-xs font-medium tabular-nums">{count}</span>
     </Button>
   );
 }

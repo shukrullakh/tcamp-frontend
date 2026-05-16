@@ -1,0 +1,12 @@
+{
+  "title": "Настройки",
+  "description": "Настройте аккаунт и интерфейс платформы",
+  "saved": "Настройки сохранены",
+  "language": { "title": "Язык", "region": "Язык и регион", "description": "Выберите язык интерфейса" },
+  "account": { "changeUsername": "Изменить username", "changeUsernameDescription": "Измените имя пользователя", "newUsername": "Новый username", "updateUsername": "Обновить username", "usernameRequired": "Username обязателен", "usernameChanged": "Username обновлен", "usernameChangeError": "Не удалось изменить username" },
+  "security": { "title": "Безопасность", "changePassword": "Изменить пароль", "passwordDescription": "Пароль аккаунта", "currentPassword": "Текущий пароль", "newPassword": "Новый пароль", "confirmPassword": "Подтвердите пароль", "updatePassword": "Обновить пароль", "passwordChanged": "Пароль обновлен", "passwordMismatch": "Пароли не совпадают", "passwordTooShort": "Пароль должен быть не короче 8 символов", "wrongPassword": "Текущий пароль неверен" },
+  "notifications": { "title": "Уведомления", "description": "Выберите, какие уведомления получать", "email": "Email-уведомления", "emailDescription": "Получайте новости о важных обсуждениях", "delivery": "Настройки получения уведомлений" },
+  "privacy": { "title": "Приватность", "publicProfile": "Публичный профиль", "publicProfileDescription": "Управляйте видимостью профиля", "profilePrivacy": "Приватность профиля" },
+  "savedPosts": { "title": "Сохраненные посты", "open": "Показать сохраненные посты", "close": "Закрыть", "empty": "Сохраненных постов пока нет" },
+  "devices": { "title": "Устройства", "description": "Устройства, где сейчас выполнен вход", "empty": "Подключенных устройств пока нет" }
+}
